@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "description": "Vector memory store for agent task retrieval. Each entry records a task outcome with an embedding placeholder for RAG-based similarity search.",
+  "entries": [
+    {
+      "task_id": 1,
+      "timestamp": "2025-01-15T10:00:00Z",
+      "description": "Example: Set up CI pipeline with GitHub Actions",
+      "domain": "deployment",
+      "outcome": "success",
+      "score": 0.92,
+      "reflection": "Workflow passed on first try. Caching node_modules reduced build time 40%.",
+      "skills_used": ["skills/deployment/docker-build/SKILL.md"],
+      "vector": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    },
+    {
+      "task_id": 2,
+      "timestamp": "2025-01-16T14:30:00Z",
+      "description": "Example: Fix flaky integration test in auth module",
+      "domain": "testing",
+      "outcome": "success",
+      "score": 0.78,
+      "reflection": "Root cause: shared DB state between tests. Fix: transaction rollback per test. Created SOP.",
+      "skills_used": ["skills/testing/integration-testing/SKILL.md"],
+      "vector": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    }
+  ],
+  "embedding_config": {
+    "model": "text-embedding-3-small",
+    "dimensions": 8,
+    "note": "Placeholder dimensions. In production, use 256-1536 dims. Populate vectors via: openai.embeddings.create(model='text-embedding-3-small', input=description)"
+  }
+}

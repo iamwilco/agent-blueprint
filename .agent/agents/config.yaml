@@ -1,0 +1,48 @@
+# Multi-Agent Configuration
+# Used by automation/agent-loop.py and compatible with CrewAI / LangGraph.
+
+agents:
+  - name: planner
+    config: agents/planner.yaml
+  - name: coder
+    config: agents/coder.yaml
+  - name: tester
+    config: agents/tester.yaml
+  - name: reviewer
+    config: agents/reviewer.yaml
+
+tools:
+  - name: filesystem
+    description: Read/write/search project files.
+  - name: git
+    description: Stage, commit, diff, log, blame.
+  - name: test_runner
+    description: Execute pytest/jest/cargo test with coverage.
+  - name: linter
+    description: Run ruff/eslint/clippy for static analysis.
+  - name: shell
+    description: Execute shell commands (sandboxed).
+
+llm:
+  provider: openai            # openai | anthropic | local
+  model: gpt-4.1              # gpt-4.1 | claude-sonnet-4-20250514 | llama3
+  temperature: 0.1
+  max_tokens: 4096
+  api_key_env: OPENAI_API_KEY # Environment variable name (never hardcode keys)
+
+routing:
+  # Task type → primary agent → fallback
+  planning: planner
+  execution: coder
+  validation: tester
+  review: reviewer
+
+process:
+  type: sequential            # sequential | hierarchical
+  max_retries: 2
+  timeout_seconds: 300
+
+memory:
+  enabled: true
+  store: learning/memory.json
+  embeddings_model: text-embedding-3-small

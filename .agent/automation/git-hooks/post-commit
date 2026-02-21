@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+#
+# post-commit hook: Triggers agent review on every commit.
+#
+# Install:
+#   ln -sf ../../.agent/automation/git-hooks/post-commit .git/hooks/post-commit
+#   chmod +x .git/hooks/post-commit
+#
+
+AGENT_DIR="$(git rev-parse --show-toplevel)/.agent"
+LOG_FILE="${AGENT_DIR}/learning/reflection-log.md"
+MEMORY_FILE="${AGENT_DIR}/learning/memory.json"
+
+COMMIT_HASH=$(git rev-parse --short HEAD)
+COMMIT_MSG=$(git log -1 --pretty=%s)
+CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r HEAD | tr '\n' ', ')
+TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
+echo "[post-commit] Commit ${COMMIT_HASH}: ${COMMIT_MSG}"
+
+# 1. Quick lint check on changed Python files
+PYTHON_FILES=$(git diff-tree --no-commit-id --name-only -r HEAD -- '*.py')
+if [ -n "${PYTHON_FILES}" ]; then
+    echo "[post-commit] Running quick lint on changed Python files..."
+    if command -v ruff &> /dev/null; then
+        ruff check ${PYTHON_FILES} --select=E,F --quiet || echo "[post-commit] Lint issues found — consider fixing."
+    fi
+fi
+
+# 2. Check if commit message follows conventional format
+if ! echo "${COMMIT_MSG}" | grep -qE "^(feat|fix|docs|refactor|test|chore|perf|ci)\(.+\): .+"; then
+    echo "[post-commit] WARNING: Commit message does not follow Conventional Commits format."
+    echo "  Expected: <type>(<scope>): <subject>"
+    echo "  Got:      ${COMMIT_MSG}"
+fi
+
+# 3. Append lightweight entry to memory.json (if jq is available)
+if command -v jq &> /dev/null && [ -f "${MEMORY_FILE}" ]; then
+    NEXT_ID=$(jq '.entries | length + 1' "${MEMORY_FILE}")
+    jq --arg ts "${TIMESTAMP}" \
+       --arg desc "Commit: ${COMMIT_MSG}" \
+       --arg hash "${COMMIT_HASH}" \
+       --arg files "${CHANGED_FILES}" \
+       --argjson id "${NEXT_ID}" \
+       '.entries += [{"task_id": $id, "timestamp": $ts, "description": $desc, "domain": "commit", "outcome": "logged", "score": 0, "reflection": ("Files: " + $files), "skills_used": [], "vector": [0,0,0,0,0,0,0,0]}]' \
+       "${MEMORY_FILE}" > "${MEMORY_FILE}.tmp" && mv "${MEMORY_FILE}.tmp" "${MEMORY_FILE}"
+    echo "[post-commit] Logged to memory.json"
+fi
+
+echo "[post-commit] Done."
