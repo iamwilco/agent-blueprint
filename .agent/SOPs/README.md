@@ -40,8 +40,6 @@ If the procedure fails midway:
 ```
 
 ## Index
-| Category | SOP | Trigger | Last Verified |
+| Category | SOP Doc | Created | Last Verified |
 |---|---|---|---|
-| debugging | `SOPs/debugging/flaky-test-fix.md` | Test suite flake | YYYY-MM-DD |
-| deployment | `SOPs/deployment/rollback-procedure.md` | Failed deploy | YYYY-MM-DD |
-| integrations | `SOPs/integrations/third-party-api-setup.md` | New integration | YYYY-MM-DD |
+| integrations | `SOPs/integrations/example-setup.md` | 2025-01-20 | 2025-02-10 |

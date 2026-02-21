@@ -16,6 +16,8 @@
 | testing | unit-testing | Isolated unit test design | `skills/testing/unit-testing/SKILL.md` |
 | testing | integration-testing | Cross-boundary test design | `skills/testing/integration-testing/SKILL.md` |
 | deployment | docker-build | Containerized build & deploy | `skills/deployment/docker-build/SKILL.md` |
+| debugging | error-handling | Systematic error diagnosis & structured exception handling | `skills/debugging/error-handling/SKILL.md` |
+| optimization | performance-tuning | Profile, identify bottlenecks, measure before/after | `skills/optimization/performance-tuning/SKILL.md` |
 
 ## Adding a New Skill
 1. Create `skills/<domain>/<skill-name>/SKILL.md`.

@@ -9,6 +9,7 @@
 | `/deploy` | Deploy | Build image, push, deploy to target | `workflows/deploy.md` |
 | `/review` | Code Review | Structured review of staged changes | `workflows/code-review.md` |
 | `/self-improve` | Self-Improve | RPEE loop for agent evolution | `workflows/self-improve.md` |
+| `/deps-update` | Dependency Update | Audit, update, and validate dependencies | `workflows/dependency-update.md` |
 
 ## Workflow Graph Convention
 Each workflow uses this pseudocode format:

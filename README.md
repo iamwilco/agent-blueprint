@@ -285,6 +285,8 @@ Copy-paste these directly into your AI coding assistant. Replace `[bracketed]` p
 | **Write tests** | `Read .agent/skills/testing/unit-testing/SKILL.md and write tests for [module/function].` |
 | **Integration tests** | `Read .agent/skills/testing/integration-testing/SKILL.md and write integration tests for [endpoint/flow].` |
 | **Refactor** | `Read .agent/skills/coding/refactor-assistant/SKILL.md and refactor [module] to [reduce complexity / extract class / etc].` |
+| **Debug an error** | `Read .agent/skills/debugging/error-handling/SKILL.md. I'm seeing [error]. Diagnose root cause and fix at source.` |
+| **Optimize performance** | `Read .agent/skills/optimization/performance-tuning/SKILL.md. [endpoint/query] is slow — profile, find bottleneck, fix, measure.` |
 
 ### Build & Deploy Prompts
 
@@ -294,6 +296,7 @@ Copy-paste these directly into your AI coding assistant. Replace `[bracketed]` p
 | **Test** | `Follow .agent/workflows/test.md. Run fast tests first, then full suite.` |
 | **Deploy** | `Follow .agent/workflows/deploy.md to deploy to [staging/production].` |
 | **Docker** | `Read .agent/skills/deployment/docker-build/SKILL.md and create/update the Dockerfile.` |
+| **Update deps** | `Follow .agent/workflows/dependency-update.md to audit and update dependencies.` |
 
 ### Learning & Self-Improvement Prompts
 

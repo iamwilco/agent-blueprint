@@ -50,7 +50,7 @@ One-sentence success criteria.
 ## Index
 | Domain | Doc | Status | Last Updated |
 |---|---|---|---|
-| example | `task/domain/user-auth.md` | template | YYYY-MM-DD |
+| auth | `task/auth/example-auth.md` | done | 2025-01-22 |
 
 ## Repeating Tasks
 Agents can auto-schedule these. Add new ones below:
