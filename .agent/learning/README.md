@@ -8,12 +8,16 @@
 | Memory (RAG) | `memory.json` | Vector store of past tasks for retrieval-augmented generation |
 | Evals | `evals/` | Benchmark scripts to score skill quality objectively |
 | Evolution | `../automation/evolve-skills.py` | DGM-inspired: mutate skills, eval variants, promote best |
+| Lessons | `lessons.md` | Accumulated rules from corrections — reviewed at session start, updated after every mistake |
 
 ## Learning Cycle
 ```
-Task Complete → Reflect (log outcome) → Store in Memory (embed task)
-  → Run Evals (score skills) → Evolve (mutate low scorers)
-  → Promote (update SKILL.md) → Next Task (with improved skills)
+Session Start → Review Lessons (don't repeat mistakes)
+  → Task → Execute → Verify (staff engineer test)
+  → Reflect (log outcome) → Store in Memory (embed task)
+  → Capture Lessons (if corrected) → Run Evals (score skills)
+  → Evolve (mutate low scorers) → Promote (update SKILL.md)
+  → Next Task (with improved skills)
 ```
 
 ## Key Concepts

@@ -85,14 +85,23 @@ When referenced, these files provide:
 
 ### "Start of day — load context"
 ```
-"Read .agent/README.md and .agent/learning/reflection-log.md for recent context.
+"Read .agent/README.md, .agent/learning/lessons.md, and 
+ .agent/learning/reflection-log.md for recent context.
+ Check .agent/task/todo.md for any in-progress work.
  I want to work on [today's task]."
+```
+
+### "After a correction — capture the lesson"
+```
+"Update .agent/learning/lessons.md with what just went wrong.
+ Write a rule that prevents this mistake in the future."
 ```
 
 ### "End of day — reflect"
 ```
 "Summarize what we accomplished today and append a reflection to
- .agent/learning/reflection-log.md using the template."
+ .agent/learning/reflection-log.md using the template.
+ Update .agent/task/todo.md with progress and next steps."
 ```
 
 ---

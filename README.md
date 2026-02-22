@@ -216,8 +216,10 @@ Once the blueprint is set up, here's how you use it day-to-day.
 ```
 Prompt to paste:
 ─────────────────────────────────────────────────
-Read .agent/README.md to understand the project. Then read
-.agent/learning/reflection-log.md for recent context.
+Read .agent/README.md to understand the project.
+Read .agent/learning/lessons.md for rules to follow.
+Read .agent/learning/reflection-log.md for recent context.
+Check .agent/task/todo.md for any in-progress work.
 I want to work on: [describe what you want to do today]
 ─────────────────────────────────────────────────
 ```
@@ -244,13 +246,22 @@ Format a commit message for these changes: [describe changes]
 ─────────────────────────────────────────────────
 ```
 
+**After a correction — capture the lesson**
+```
+Prompt to paste:
+─────────────────────────────────────────────────
+Update .agent/learning/lessons.md with what just went wrong.
+Write a rule that prevents this mistake in the future.
+─────────────────────────────────────────────────
+```
+
 **End of day — reflect**
 ```
 Prompt to paste:
 ─────────────────────────────────────────────────
 Summarize what we accomplished today and append a reflection to
-.agent/learning/reflection-log.md using the template at the bottom
-of that file.
+.agent/learning/reflection-log.md using the template.
+Update .agent/task/todo.md with progress and next steps.
 ─────────────────────────────────────────────────
 ```
 
@@ -302,6 +313,9 @@ Copy-paste these directly into your AI coding assistant. Replace `[bracketed]` p
 
 | When | Prompt |
 |---|---|
+| **Capture lesson** | `Update .agent/learning/lessons.md with what just went wrong. Write a rule to prevent it.` |
+| **Review lessons** | `Read .agent/learning/lessons.md and apply all rules for this session.` |
+| **Session todo** | `Write today's plan to .agent/task/todo.md with checkable items before starting.` |
 | **Post-task reflection** | `Append a reflection to .agent/learning/reflection-log.md for: [what we just did].` |
 | **Run benchmarks** | `Run python .agent/learning/evals/coding-bench.py and report results.` |
 | **Evolve skills** | `Run python .agent/automation/evolve-skills.py --all and report which skills improved.` |

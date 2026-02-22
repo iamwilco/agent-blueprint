@@ -52,6 +52,9 @@ One-sentence success criteria.
 |---|---|---|---|
 | auth | `task/auth/example-auth.md` | done | 2025-01-22 |
 
+## Session Checklist
+For lightweight day-to-day tracking, use `task/todo.md` — a running checklist the agent writes before implementation and checks off during work. See `task/todo.md` for format.
+
 ## Repeating Tasks
 Agents can auto-schedule these. Add new ones below:
 | Task | Frequency | Trigger | Last Run |
